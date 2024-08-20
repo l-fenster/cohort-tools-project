@@ -39,9 +39,33 @@ app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/views/docs.html");
 });
 
-app.get("/api/cohorts", (req, res) => res.json(cohorts));
+// app.get("/api/cohorts", (req, res) => res.json(cohorts));
+app.get("/cohorts", (req, res) => {
+  cohorts
+    .find({})
+    .then((cohort) => {
+      console.log("Retrieved cohort ->", cohort);
+      res.json(cohort);
+    })
+    .catch((error) => {
+      console.error("Error while retrieving cohort ->", error);
+      res.status(500).json({ error: "Failed to retrieve cohort" });
+    });
+});
 
-app.get("/api/students", (req, res) => res.json(students));
+// app.get("/api/students", (req, res) => res.json(students));
+app.get("/students", (req, res) => {
+  students
+    .find({})
+    .then((student) => {
+      console.log("Retrieved cohort ->", student);
+      res.json(student);
+    })
+    .catch((error) => {
+      console.error("Error while retrieving student ->", error);
+      res.status(500).json({ error: "Failed to retrieve student" });
+    });
+});
 
 // START SERVER
 app.listen(PORT, () => {

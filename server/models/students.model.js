@@ -7,7 +7,7 @@ const studentSchema = new Schema({
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
   linkedinUrl: { type: String, default: "" },
-  language: [
+  languages: [
     {
       type: String,
       enum: [
