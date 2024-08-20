@@ -7,18 +7,20 @@ const studentSchema = new Schema({
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
   linkedinUrl: { type: String, default: "" },
-  language: {
-    type: Array,
-    enum: [
-      "English",
-      "Spanish",
-      "French",
-      "German",
-      "Portoguese",
-      "Dutch",
-      "Other",
-    ],
-  },
+  language: [
+    {
+      type: String,
+      enum: [
+        "English",
+        "Spanish",
+        "French",
+        "German",
+        "Portuguese",
+        "Dutch",
+        "Other",
+      ],
+    },
+  ],
   program: {
     type: String,
     enum: ["Web Dev", "UX/UI", "Data Analytics", "Cybersecurity"],
