@@ -45,7 +45,7 @@ app.get("/cohorts", (req, res) => {
     .find({})
     .then((cohort) => {
       console.log("Retrieved cohort ->", cohort);
-      res.json(cohort);
+      res.status(201).json(cohort);
     })
     .catch((error) => {
       console.error("Error while retrieving cohort ->", error);
@@ -59,7 +59,7 @@ app.get("/students", (req, res) => {
     .find({})
     .then((student) => {
       console.log("Retrieved cohort ->", student);
-      res.json(student);
+      res.status(201).json(student);
     })
     .catch((error) => {
       console.error("Error while retrieving student ->", error);
