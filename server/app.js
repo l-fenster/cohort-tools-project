@@ -7,6 +7,11 @@ const helmet = require("helmet");
 const PORT = 5005;
 const studentRoutes = require("./routes/student.routes");
 const cohortRoutes = require("./routes/cohort.routes");
+const authRoutes = require("./routes/auth.routes");
+const isAuthenticated = require("./middleware/jwt");
+const userRoute = require("./routes/User.routes");
+
+require("dotenv").config();
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/cohort-tools-api")
@@ -50,6 +55,14 @@ app.use("/api", studentRoutes);
 // Cohort routes
 
 app.use("/api", cohortRoutes);
+
+// User route
+
+app.use("/api/users", isAuthenticated, userRoute);
+
+//auth routes
+
+app.use("/auth", authRoutes);
 
 //error handling
 
